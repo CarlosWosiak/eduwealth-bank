@@ -1,3 +1,4 @@
+#pragma warning disable CS8602 // Dereference of a possibly null reference.
 namespace bank;
 
 public class AccountManagement
@@ -73,5 +74,18 @@ public class AccountManagement
             default:
                 return false;
         }
+    }
+
+    public async Task GetTheBestFixedIncomeOption(AccountHolder accountHolder)
+    {
+        Console.WriteLine("Checking for options...");
+        var fixedIncomeOptions = await Task.WhenAll(
+            FixedIncomeSource.GetFixedIncomeMonthlyRate("Invest Core"),
+            FixedIncomeSource.GetFixedIncomeMonthlyRate("Global F11"),
+            FixedIncomeSource.GetFixedIncomeMonthlyRate("World bond")
+            );
+        
+        var bestOption = fixedIncomeOptions.MaxBy(fixedIncomeOption => fixedIncomeOption.MonthlyRate);
+        Console.WriteLine($"The best fixed income option for {accountHolder.Name} is {bestOption.Name} with a monthly rate of {bestOption.MonthlyRate:#.##}%");
     }
 }
