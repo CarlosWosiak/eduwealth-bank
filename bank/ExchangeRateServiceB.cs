@@ -9,7 +9,7 @@ public static class ExchangeRateServiceB
         var watch = System.Diagnostics.Stopwatch.StartNew();
 
         var randomNumberGenerator = new Random();
-        var randomTimeToReturn = randomNumberGenerator.Next(1000, 100000);
+        var randomTimeToReturn = randomNumberGenerator.Next(1000, 10000);
         await Task.Delay(randomTimeToReturn);
         watch.Stop();
 
