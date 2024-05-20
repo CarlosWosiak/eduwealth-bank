@@ -1,9 +1,13 @@
-﻿// See https://aka.ms/new-console-template for more information
-
-using bank;
+﻿using bank;
 
 AccountManagement bankManagement = new AccountManagement();
 
 AccountHolder john = new AccountHolder("John", 0);
 
-await bankManagement.GetTheBestFixedIncomeOption(john);
+//await ExchangeRateServiceA.GetExchangeRateAsync("JPY");
+//await ExchangeRateServiceB.GetExchangeRateAsync("JPY");
+
+await Task.WhenAny(
+    ExchangeRateServiceA.GetExchangeRateAsync("JPY"),
+    ExchangeRateServiceB.GetExchangeRateAsync("JPY")
+    );
