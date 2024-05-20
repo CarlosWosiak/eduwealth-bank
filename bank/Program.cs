@@ -5,9 +5,9 @@ using bank;
 AccountManagement bankManagement = new AccountManagement();
 
 AccountHolder john = new AccountHolder("John", 0);
-
+;   
 john.ShowBalance();
 
-await bankManagement.AddFunds(john, 100);
+bankManagement.TakeLoan(john, 1500);
 
 john.ShowBalance();
