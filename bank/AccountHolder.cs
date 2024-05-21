@@ -4,13 +4,15 @@ namespace bank;
 public class AccountHolder
 {
     public string Name { get; set; }
+    public string Currency { get; set; }
     public float Balance { get; set; }
     
 
-    public AccountHolder(string name, float balance)
+    public AccountHolder(string name, float balance, string currency)
     {
         Name = name;
         Balance = balance;
+        Currency = currency;
     }
 
     public void ShowBalance()

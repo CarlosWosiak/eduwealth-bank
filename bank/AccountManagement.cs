@@ -88,4 +88,30 @@ public class AccountManagement
         var bestOption = fixedIncomeOptions.MaxBy(fixedIncomeOption => fixedIncomeOption.MonthlyRate);
         Console.WriteLine($"The best fixed income option for {accountHolder.Name} is {bestOption.Name} with a monthly rate of {bestOption.MonthlyRate:#.##}%");
     }
+
+    public async Task MakeInternationalTransaction(AccountHolder sender, AccountHolder receiver, float amountInSenderCurrency)
+    {
+        
+        Console.WriteLine($"Initializing a transaction of {amountInSenderCurrency} from {sender.Name} to {receiver.Name}");
+        var senderFunds = sender.GetBalance();
+        var receiverFunds = receiver.GetBalance();
+
+        await Task.WhenAll(senderFunds, receiverFunds);
+
+        if (senderFunds.Result < amountInSenderCurrency)
+        {
+            throw new Exception(
+                $"The balance is not enough, {sender.Name} has only {senderFunds.Result} {sender.Currency}");
+        }
+
+        var serviceA = ExchangeRateServiceA.GetExchangeRateAsync(receiver.Currency);
+        var serviceB = ExchangeRateServiceB.GetExchangeRateAsync(receiver.Currency);
+        var exchangeRate = await Task.WhenAny(serviceA, serviceB);
+
+        var amountInReceiverCurrency = amountInSenderCurrency * exchangeRate.Result;
+
+        sender.Balance = senderFunds.Result - amountInSenderCurrency;
+        receiver.Balance = receiverFunds.Result + amountInReceiverCurrency;
+        Console.WriteLine($"{sender.Name} sent {amountInSenderCurrency:n2} {sender.Currency} and {receiver.Name} received {amountInReceiverCurrency:n2} {receiver.Currency}");
+    }
 }
