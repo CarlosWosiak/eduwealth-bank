@@ -1,4 +1,4 @@
-namespace bank;
+namespace Eduwealth;
 
 public class AccountHolder
 {
