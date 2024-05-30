@@ -1,4 +1,4 @@
-﻿using bank;
+﻿using Eduwealth;
 
 AccountManagement bankManagement = new AccountManagement();
 

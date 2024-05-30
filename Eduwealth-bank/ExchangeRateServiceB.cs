@@ -1,14 +1,15 @@
-namespace bank;
+namespace Eduwealth;
 
-public static class ExchangeRateServiceA
+public static class ExchangeRateServiceB
 {
     public static async Task GetExchangeRateAsync(string currency)
     {
-        Console.WriteLine("Getting the exchangeRate from Service A");
+        Console.WriteLine("Getting the exchangeRate from Service B");
+
         var watch = System.Diagnostics.Stopwatch.StartNew();
 
         var randomNumberGenerator = new Random();
-        var randomTimeToReturn = randomNumberGenerator.Next(1000, 10000);
+        var randomTimeToReturn = randomNumberGenerator.Next(1000, 100000);
         await Task.Delay(randomTimeToReturn);
         watch.Stop();
 
