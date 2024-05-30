@@ -1,6 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "bank", "bank\bank.csproj", "{40E77A0F-61E1-4115-8C73-1ADC589CCEDB}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Eduwealth-bank", "Eduwealth-bank\Eduwealth-bank.csproj", "{40E77A0F-61E1-4115-8C73-1ADC589CCEDB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
