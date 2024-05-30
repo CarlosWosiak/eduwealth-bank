@@ -26,27 +26,3 @@ public class AccountHolder
     }
 
 }
-
-public static class DataBase
-{
-    public static async Task<User[]> GetUsers()
-    {
-        return await Task.FromResult(new User[]{ });
-    }
-    
-    public static async Task<Product[]> GetProducts()
-    {
-        return await Task.FromResult(new Product[]{ });
-    }
-}
-
-
-public class User
-{
-}
-
-public class Product
-{
-}
-
-public class Deal();
