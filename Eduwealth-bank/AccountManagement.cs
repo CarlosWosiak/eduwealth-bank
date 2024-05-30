@@ -32,46 +32,5 @@ public class AccountManagement
         sender.Balance -= amount;
         receiver.Balance += amount;
     }
-
-
-    public void TakeLoan(AccountHolder accountHolder, float amount)
-    {
-        var loanApproval = IsCreditEnoughToTakeTheLoan(accountHolder, amount);
-        Console.WriteLine($"John had his loan request approved? {(loanApproval ? "yes" : "no")}");
-        if (loanApproval)
-        {
-            accountHolder.Balance += amount;
-        }
-    }
-
-    private static bool IsCreditEnoughToTakeTheLoan(AccountHolder accountHolder, float amount)
-    {
-        if (amount <= 0)
-        {
-            throw new Exception("The amount informed is not valid");
-        }
-
-        var equimail = new CreditCompany();
-        var creditSecure = new CreditCompany();
-        var equimailCredit = equimail.GetCreditScore(accountHolder);
-        var creditSecureCredit = creditSecure.GetCreditScore(accountHolder);
-
-        Task.WaitAll(equimailCredit, creditSecureCredit);
-        
-        var averageCredit = (equimailCredit.Result + creditSecureCredit.Result) / 2;
-        Console.WriteLine($"The average credit score for {accountHolder.Name} is {averageCredit}");;
-        switch (amount)
-        {
-            case < 1000:
-                return averageCredit > 300;
-            case <= 1000 and < 5000:
-                return averageCredit > 450;
-            case <= 5000 and < 10000:
-                return averageCredit > 600;
-            case > 10000:
-                return averageCredit >= 800;
-            default:
-                return false;
-        }
-    }
+    
 }

@@ -4,10 +4,10 @@ using Eduwealth;
 
 AccountManagement bankManagement = new AccountManagement();
 
-AccountHolder john = new AccountHolder("John", 0);
-;   
-john.ShowBalance();
+AccountHolder john = new AccountHolder("John", 1000);
+AccountHolder clara = new AccountHolder("Clara", 0);
 
-bankManagement.TakeLoan(john, 1500);
+await bankManagement.MakeTransfer(john, clara, 400);
 
 john.ShowBalance();
+clara.ShowBalance();
