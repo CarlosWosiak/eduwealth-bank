@@ -1,4 +1,3 @@
-// ReSharper disable All
 namespace bank;
 
 public class AccountHolder

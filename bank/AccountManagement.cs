@@ -1,4 +1,3 @@
-#pragma warning disable CS8602 // Dereference of a possibly null reference.
 namespace bank;
 
 public class AccountManagement
