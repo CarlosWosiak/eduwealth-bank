@@ -1,6 +1,4 @@
-﻿// See https://aka.ms/new-console-template for more information
-
-using bank;
+﻿using Eduwealth;
 
 AccountManagement bankManagement = new AccountManagement();
 

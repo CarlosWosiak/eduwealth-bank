@@ -1,5 +1,5 @@
 #pragma warning disable CS8602 // Dereference of a possibly null reference.
-namespace bank;
+namespace Eduwealth;
 
 public class AccountManagement
 {
